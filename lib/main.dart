@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:second_flutter_app/pages/first_page.dart';
+import 'package:second_flutter_app/pages/second_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,73 +15,24 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        appBarTheme: const AppBarTheme(
+          backgroundColor:
+              Colors.green, // Or use ColorScheme.primary if available
+          foregroundColor: Colors.white, // Text/icon color for contrast
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: WidgetStateProperty.all<Color>(Colors.green),
+            foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
+          ),
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Philip's App"),
-        /*backgroundColor: Theme.of(context).colorScheme.primary,
-        titleTextStyle: const TextStyle(
-          color: Colors.white,
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-        ),*/
-      ),
-      body: Center(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text('You have pushed the button $_counter many times:'),
-            ]),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _counter++;
-          });
-
-          print("button pressed $_counter times");
-          // TRY THIS: Uncomment this line to see the effect of hot reload.
-          // setState(() {
-          //   _counter++;
-          // });
-        },
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      home: FirstPage(),
+      routes: {
+        '/first': (context) => FirstPage(),
+        '/second': (context) => SecondPage(),
+      },
     );
   }
 }
