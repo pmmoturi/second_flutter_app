@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/first': (context) => FirstPage(),
         '/second': (context) => SecondPage(),
+        '/settings': (context) => Placeholder(),
       },
     );
   }

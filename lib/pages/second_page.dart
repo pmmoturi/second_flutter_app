@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:second_flutter_app/pages/first_page.dart';
+import 'package:second_flutter_app/main.dart';
 
 class SecondPage extends StatelessWidget {
   const SecondPage({super.key});
@@ -8,7 +9,7 @@ class SecondPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Second Page"),
+        title: Text("Second Page"),
       ),
       drawer: Drawer(
         child: ListView(
@@ -32,7 +33,14 @@ class SecondPage extends StatelessWidget {
             ListTile(
               title: Text('Second Page'),
               onTap: () {
+                Navigator.pop(context);
                 Navigator.pushNamed(context, '/second');
+              },
+            ),
+            ListTile(
+              title: Text('Settings'),
+              onTap: () {
+                Navigator.pushNamed(context, '/settings');
               },
             ),
           ],
